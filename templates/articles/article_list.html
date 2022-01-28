@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} {{block.super}} - Article List {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h2>Available articles</h2>
+        <ul class="list-group">
+            {% for article in articles %}
+                <li class="list-group-item">{{ article.title }}</li>
+            {% endfor %}
+        </ul>
+        <br>
+        <span class="text-muted">{{ notice }}</span>
+    </div>
+</div>
+{% endblock content %}

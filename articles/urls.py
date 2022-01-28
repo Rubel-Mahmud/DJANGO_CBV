@@ -13,4 +13,8 @@ urlpatterns = [
 
     # url for the FormHandleView
     path('cbv/formview/', views.FormHandleView.as_view(), name='form_view'),
+
+    # Article list
+    path('article/list/', views.ArticleList.as_view(), name='article_list'),
+
 ]

@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views import View
 from django.utils import timezone
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from django.urls import reverse
 from .forms import ArticleForm
+from .models import Article
 
 def home(request):
     return render(request, 'articles/home.html')
@@ -55,3 +56,41 @@ class FormHandleView(FormView):
 
 
     # in the same way we can use the form_invalid() method for process invalid data
+
+
+
+# Aticle list view in simple class base view
+# class ArticleList(View):
+#
+#     def get(self, request):
+#         context = {}
+#         articles = Article.objects.all()
+#         context['articles'] = articles
+#         return render(request, 'articles/article_list.html', context)
+
+
+
+# Article list view using TemplateView
+# class ArticleList(TemplateView):
+#     template_name = 'articles/article_list.html'
+#
+#     def get_context_data(self, **kwargs):
+#         articles = Article.objects.all()
+#         context = super().get_context_data(**kwargs)
+#         context['articles'] = articles
+#         return context
+
+
+# Article list in Generic ListView
+class ArticleList(ListView):
+    template_name = 'articles/article_list.html'
+    model = Article
+
+    # if we need to render extra context variable then we have to override the
+    # get_context_data() method
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        context['articles'] = context.get('object_list')
+        context['notice'] = 'This message from admin panel.'
+        return context
