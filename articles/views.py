@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views import View
 from django.utils import timezone
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from django.urls import reverse
+from .forms import ArticleForm
 
 def home(request):
     return render(request, 'articles/home.html')
@@ -29,3 +31,27 @@ class MyTemplateView(TemplateView):
         context = super().get_context_data(*kwargs)
         context['now'] = timezone.now()
         return context
+
+
+
+    # To handle form the generic FormView will work
+class FormHandleView(FormView):
+    form_class = ArticleForm
+    template_name = 'articles/create_article.html'
+    # success_url = '/cbv/gtv/' #hard coded url
+
+
+    # we can also define the get_success_url() methd
+    def get_success_url(self):
+        return reverse('generic_template_view')
+
+
+    # To get the valid data as cleaned_data
+    def form_valid(self, form):
+        # valid data will be process here
+        data = form.cleaned_data
+        print(data)
+        return super().form_valid(form)
+
+
+    # in the same way we can use the form_invalid() method for process invalid data

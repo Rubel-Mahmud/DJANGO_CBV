@@ -10,4 +10,7 @@ urlpatterns = [
 
     # without defining a view just use this url to render a static template without passing any coontext data
     path('gtv/', TemplateView.as_view(template_name='articles/cvb_home.html'), name='gtv'),
+
+    # url for the FormHandleView
+    path('cbv/formview/', views.FormHandleView.as_view(), name='form_view'),
 ]

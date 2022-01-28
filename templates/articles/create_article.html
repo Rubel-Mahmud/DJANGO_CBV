@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} {{block.super}} - Create Article {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <h2>Hello! wellcome to the article page.</h2>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <input type="submit" class="btn btn-primary" value="Create">
+        </form>
+    </div>
+</div>
+{% endblock content %}
