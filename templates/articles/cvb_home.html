@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %} {{block.super}} - cbv home {% endblock title %}
-
 {% block content %}
 <div class="container">
     <div class="text-center">
@@ -10,6 +8,7 @@
             <p>{{ now }}</p>
         {% else %}
             <p>No time available</p>
+            <small>This is Generic TemplateView is working without defining a view in views.py file</small>
         {% endif %}
     </div>
 </div>

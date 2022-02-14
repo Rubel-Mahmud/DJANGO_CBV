@@ -17,4 +17,6 @@ urlpatterns = [
     # Article list
     path('article/list/', views.ArticleList.as_view(), name='article_list'),
 
+    # Article detial
+    path('article/<int:pk>/<str:slug>/detail/', views.ArticleDetailView.as_view(), name='article_detail'),
 ]

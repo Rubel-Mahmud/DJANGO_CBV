@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>{{ object.title }}</h2>
+        </div>
+        <div class="col-md-4" style="text-align:right;">
+            <span>{{ object.created_at }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <small>{{ object.body }}</small>
+        <a href="{% url 'article_list' %}" style="margin-top:20px;">
+            <button class="btn btn-success">Back to article list</button>
+        </a>
+    </div>
+</div>
+{% endblock content %}
