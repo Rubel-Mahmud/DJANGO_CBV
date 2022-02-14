@@ -143,7 +143,13 @@ class ArticleList(TitleMixin, PublicMixin, ListView):
 
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(TitleMixin, DetailView):
     template_name = 'articles/article_detail.html'
     model = Article
     query_pk_and_slug = True
+    # page_title = ' - Article details' # hard coded page title
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset=queryset)
+        self.page_title = ' - ' + obj.title
+        return obj
