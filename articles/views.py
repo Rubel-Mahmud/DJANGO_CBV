@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from django.urls import reverse, reverse_lazy
 from .mixins import TitleMixin, PublicMixin
-from .forms import ArticleForm
+from .forms import ArticleForm, ArticleCreationForm
 from .models import Article
 
 
@@ -126,8 +126,9 @@ class ArticleDetailView(TitleMixin, DetailView):
 
 
 class ArticleCreateView(CreateView):
-    model = Article
-    fields = ('title', 'body', 'is_public')
+    # model = Article # Don't need if form_class is specified
+    form_class = ArticleCreationForm
+    # fields = ('title', 'body', 'is_public')
     template_name = 'articles/article_create.html'
     # success_url = '/article/list/' # hard coded url
     success_url = reverse_lazy('articles:article_list')
