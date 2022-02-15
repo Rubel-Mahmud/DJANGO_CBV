@@ -16,6 +16,9 @@ urlpatterns = [
     # url for the FormHandleView
     path('cbv/formview/', views.FormHandleView.as_view(), name='form_view'),
 
+    # Create Article
+    path('article/create/', views.ArticleCreateView.as_view(), name='create_article'),
+
     # Article list
     path('article/list/', views.ArticleList.as_view(), name='article_list'),
 
