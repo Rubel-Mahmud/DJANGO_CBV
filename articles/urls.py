@@ -28,4 +28,7 @@ urlpatterns = [
     # Article update
     path('article/<int:pk>/<str:slug>/update/', views.ArticleUpdateView.as_view(), name='article_update'),
 
+    # Article delete
+    path('article/<int:pk>/<str:slug>/delete/', views.ArticleDeleteView.as_view(), name='article_delete'),
+
 ]

@@ -18,6 +18,9 @@
                     <a href="{% url 'articles:article_detail' pk=article.pk slug=article.slug %}">
                         {{ forloop.counter }} - {{ article.title }}
                     </a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'articles:article_delete' pk=article.pk slug=article.slug %}">
+                        Delete
+                    </a>
                 </li>
             {% endfor %}
         </ul>

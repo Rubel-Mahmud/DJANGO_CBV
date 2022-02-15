@@ -8,6 +8,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 from django.urls import reverse, reverse_lazy
 from .mixins import TitleMixin, PublicMixin
@@ -143,3 +144,9 @@ class ArticleUpdateView(UpdateView):
     query_pk_and_slug = True
     success_url = reverse_lazy('articles:article_list')
 
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    template_name = 'articles/confirm_delete.html'
+    query_pk_and_slug = True
+    success_url = reverse_lazy('articles:article_list')
