@@ -7,6 +7,7 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
+    UpdateView,
 )
 from django.urls import reverse, reverse_lazy
 from .mixins import TitleMixin, PublicMixin
@@ -132,3 +133,13 @@ class ArticleCreateView(CreateView):
     template_name = 'articles/article_create.html'
     # success_url = '/article/list/' # hard coded url
     success_url = reverse_lazy('articles:article_list')
+
+
+
+class ArticleUpdateView(UpdateView):
+    model = Article
+    form_class = ArticleCreationForm
+    template_name = 'articles/article_update.html'
+    query_pk_and_slug = True
+    success_url = reverse_lazy('articles:article_list')
+

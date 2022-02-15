@@ -24,4 +24,8 @@ urlpatterns = [
 
     # Article detial
     path('article/<int:pk>/<str:slug>/detail/', views.ArticleDetailView.as_view(), name='article_detail'),
+
+    # Article update
+    path('article/<int:pk>/<str:slug>/update/', views.ArticleUpdateView.as_view(), name='article_update'),
+
 ]
